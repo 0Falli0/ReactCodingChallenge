@@ -1,0 +1,57 @@
+ensembl;gene_symbol;name;biotype;chromosome;start;end
+ENSG00000250577;;;Linc R N A;4;138923930;138924232
+ENSG00000171657;GPR82;"G protein-coupled receptor 82 [Source:HGNC Symbol;Acc:HGNC:4533]";Protein Coding;X;41724155;41730135
+ENSG00000249877;;;Linc R N A;4;189288677;189291336
+ENSG00000164604;GPR85;"G protein-coupled receptor 85 [Source:HGNC Symbol;Acc:HGNC:4536]";Protein Coding;7;113078331;113087778
+ENSG00000181656;GPR88;"G protein-coupled receptor 88 [Source:HGNC Symbol;Acc:HGNC:4539]";Protein Coding;1;100538137;100542018
+ENSG00000270702;;;Processed Pseudogene;15;41718370;41718672
+ENSG00000170412;GPRC5C;"G protein-coupled receptor class C group 5 member C [Source:HGNC Symbol;Acc:HGNC:13309]";Protein Coding;17;74424851;74451653
+ENSG00000132522;GPS2;"G protein pathway suppressor 2 [Source:HGNC Symbol;Acc:HGNC:4550]";Protein Coding;17;7311324;7315564
+ENSG00000236919;;;Unprocessed Pseudogene;11;50246554;50247761
+ENSG00000248015;;;Antisense;19;1392170;1396467
+ENSG00000278110;;;Unprocessed Pseudogene;22;18623339;18625289
+ENSG00000167701;GPT;"glutamic--pyruvic transaminase [Source:HGNC Symbol;Acc:HGNC:4552]";Protein Coding;8;144502973;144507174
+ENSG00000253180;;;Processed Pseudogene;8;99003407;99003842
+ENSG00000233276;GPX1;"glutathione peroxidase 1 [Source:HGNC Symbol;Acc:HGNC:4553]";Protein Coding;3;49357176;49358600
+ENSG00000197582;GPX1P1;"glutathione peroxidase pseudogene 1 [Source:HGNC Symbol;Acc:HGNC:4560]";Processed Pseudogene;X;13378735;13379340
+ENSG00000228225;;;Processed Pseudogene;2;84031140;84032358
+ENSG00000260051;;;Antisense;16;1451760;1452653
+ENSG00000282827;;"ATR interacting protein [Source:EntrezGene;Acc:84126]";Protein Coding;3;48446710;48467645
+ENSG00000237586;;;Processed Pseudogene;8;124301315;124301804
+ENSG00000215326;GPX1P2;"glutathione peroxidase pseudogene 2 [Source:HGNC Symbol;Acc:HGNC:4561]";Processed Pseudogene;21;27143344;27143949
+ENSG00000176153;GPX2;"glutathione peroxidase 2 [Source:HGNC Symbol;Acc:HGNC:4554]";Protein Coding;14;64939152;64942905
+ENSG00000225905;;;Antisense;1;1420245;1422691
+ENSG00000211445;GPX3;"glutathione peroxidase 3 [Source:HGNC Symbol;Acc:HGNC:4555]";Protein Coding;5;151020438;151028993
+ENSG00000271824;;;Protein Coding;5;136191468;136193134
+ENSG00000224586;GPX5;"glutathione peroxidase 5 [Source:HGNC Symbol;Acc:HGNC:4557]";Protein Coding;6;28525925;28534952
+ENSG00000260651;;;Antisense;4;102500841;102501319
+ENSG00000231418;;;Linc R N A;7;31414645;31421286
+ENSG00000183733;FIGLA;"folliculogenesis specific bHLH transcription factor [Source:HGNC Symbol;Acc:HGNC:24669]";Protein Coding;2;70777310;70790643
+ENSG00000267598;;;Antisense;19;13153071;13154193
+ENSG00000274727;;;Processed Pseudogene;20;64327418;64327972
+ENSG00000198704;GPX6;"glutathione peroxidase 6 [Source:HGNC Symbol;Acc:HGNC:4558]";Protein Coding;6;28503296;28528215
+ENSG00000116157;GPX7;"glutathione peroxidase 7 [Source:HGNC Symbol;Acc:HGNC:4559]";Protein Coding;1;52602372;52609051
+ENSG00000243164;;;Processed Pseudogene;12;73648666;73649039
+ENSG00000154016;GRAP;"GRB2-related adaptor protein [Source:HGNC Symbol;Acc:HGNC:4562]";Protein Coding;17;19020673;19047637
+ENSG00000268870;;;Protein Coding;19;12391949;12441082
+ENSG00000254631;;;Antisense;11;74397549;74485742
+ENSG00000257943;;;Transcribed Unitary Pseudogene;12;95311312;95442482
+ENSG00000100351;GRAP2;"GRB2-related adaptor protein 2 [Source:HGNC Symbol;Acc:HGNC:4563]";Protein Coding;22;39901082;39973721
+ENSG00000141738;GRB7;"growth factor receptor bound protein 7 [Source:HGNC Symbol;Acc:HGNC:4567]";Protein Coding;17;39737927;39747291
+ENSG00000106070;GRB10;"growth factor receptor bound protein 10 [Source:HGNC Symbol;Acc:HGNC:4564]";Protein Coding;7;50590063;50793462
+ENSG00000115290;GRB14;"growth factor receptor bound protein 14 [Source:HGNC Symbol;Acc:HGNC:4565]";Protein Coding;2;164492812;164621848
+ENSG00000280118;;;T E C;15;24848357;24852253
+ENSG00000279674;;;T E C;17;34000789;34006772
+ENSG00000277879;;;Antisense;10;117267116;117268668
+ENSG00000137106;GRHPR;"glyoxylate and hydroxypyruvate reductase [Source:HGNC Symbol;Acc:HGNC:4570]";Protein Coding;9;37422666;37436990
+ENSG00000155511;GRIA1;"glutamate ionotropic receptor AMPA type subunit 1 [Source:HGNC Symbol;Acc:HGNC:4571]";Protein Coding;5;153489615;153813869
+ENSG00000120251;GRIA2;"glutamate ionotropic receptor AMPA type subunit 2 [Source:HGNC Symbol;Acc:HGNC:4572]";Protein Coding;4;157204182;157366075
+ENSG00000125675;GRIA3;"glutamate ionotropic receptor AMPA type subunit 3 [Source:HGNC Symbol;Acc:HGNC:4573]";Protein Coding;X;123184153;123490915
+ENSG00000152578;GRIA4;"glutamate ionotropic receptor AMPA type subunit 4 [Source:HGNC Symbol;Acc:HGNC:4574]";Protein Coding;11;105609994;105982092
+ENSG00000182771;GRID1;"glutamate ionotropic receptor delta type subunit 1 [Source:HGNC Symbol;Acc:HGNC:4575]";Protein Coding;10;85599555;86366493
+ENSG00000152208;GRID2;"glutamate ionotropic receptor delta type subunit 2 [Source:HGNC Symbol;Acc:HGNC:4576]";Protein Coding;4;92303622;93810157
+ENSG00000275572;GRIFIN;"galectin-related inter-fiber protein [Source:HGNC Symbol;Acc:HGNC:4577]";Protein Coding;7;2474844;2476894
+ENSG00000207408;;"Y RNA [Source:RFAM;Acc:RF00019]";Misc R N A;X;53324562;53324674
+ENSG00000171189;GRIK1;"glutamate ionotropic receptor kainate type subunit 1 [Source:HGNC Symbol;Acc:HGNC:4579]";Protein Coding;21;29536933;29940033
+ENSG00000164418;GRIK2;"glutamate ionotropic receptor kainate type subunit 2 [Source:HGNC Symbol;Acc:HGNC:4580]";Protein Coding;6;101398788;102070083
+ENSG00000257258;;;Linc R N A;12;29143196;29148675
