@@ -1,5 +1,6 @@
 import { DataTable } from 'mantine-datatable';
-import React from 'react';
+import React from 'react'
+import { useEffect, useState } from 'react';
 import Papa from "papaparse"
 import { Box } from '@mantine/core';
 
@@ -17,10 +18,7 @@ type Data = {
   data: Gene[]
 }
 
-const PAGE_SIZE = 25;
-
-
-
+const PAGE_SIZES = [10, 15, 20];
 
 function Data_Table_Mant() {
 
@@ -28,7 +26,8 @@ function Data_Table_Mant() {
   const [load, setLoad] = React.useState<boolean>(true)
 
   const [page, setPage] = React.useState(1);
-  const [records, setRecords] = React.useState(values?.data.slice(0, PAGE_SIZE));
+  const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
+  const [records, setRecords] = React.useState(values?.data.slice(0, pageSize));
 
 
   const getCSV = () => {
@@ -46,8 +45,8 @@ function Data_Table_Mant() {
 
   React.useEffect(() => {
     getCSV();
-    const from = (page - 1) * PAGE_SIZE;
-    const to = from + PAGE_SIZE;
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize;
     setRecords(values?.data.slice(from, to));
   }, [page,values?.data])
 
@@ -71,10 +70,15 @@ function Data_Table_Mant() {
       { accessor: 'start', title:'Start'},
       { accessor: 'end', title:'End'}]}
     records={records}
+    onRowClick={() => {
+      console.log("You clicked a row!")
+    }}
     totalRecords={values?.data.length}
-    recordsPerPage={PAGE_SIZE}
     page={page}
     onPageChange={(p) => setPage(p)}
+    recordsPerPageOptions={PAGE_SIZES}
+    recordsPerPage={pageSize}
+    onRecordsPerPageChange={setPageSize}
     />
     </Box>
   );
