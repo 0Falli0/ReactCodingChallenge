@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Data_Table_Mant from './components/MantDataTable';
+import DataTableMant from './components/MantDataTable';
 
 function App() {
   return (
     <div>
-      <Data_Table_Mant/>
+      <DataTableMant/>
     </div>
   );
 }
