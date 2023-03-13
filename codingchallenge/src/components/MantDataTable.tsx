@@ -29,6 +29,7 @@ function DataTableMant() {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
   const [records, setRecords] = React.useState(values?.data.slice(0, pageSize));
+  const [table_width,setWidth] = React.useState('100%')
 
   const [selectedRecords, setSelectedRecords] = useState<Gene[]>([])
 
