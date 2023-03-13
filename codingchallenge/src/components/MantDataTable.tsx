@@ -22,7 +22,6 @@ const PAGE_SIZE = 60;
 
 
 
-
 function DataTableMant() {
 
   const [values, setValues] = React.useState<Data>()
@@ -30,6 +29,7 @@ function DataTableMant() {
 
   const [page, setPage] = React.useState(1);
   const [records, setRecords] = React.useState(values?.data.slice(0, PAGE_SIZE));
+  const [table_width,setWidth] = React.useState('100%')
 
 
   const getCSV = () => {
