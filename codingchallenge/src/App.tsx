@@ -1,3 +1,4 @@
+import { Container } from '@mantine/core';
 import React from 'react';
 import './App.css';
 import DataTableMant from './components/MantDataTable';

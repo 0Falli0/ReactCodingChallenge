@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "@mantine/core": "^6.0.1",
+    "mantine-datatable": "^2.0.3",
+    "papaparse": "^5.4.0",
     "react-async": "^10.0.1"
   }
 }
