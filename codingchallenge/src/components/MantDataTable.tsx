@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Papa from "papaparse"
 import { Box } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
+import { SimpleGrid } from '@mantine/core';
 
 type Gene = {
   ensembl: string
@@ -19,7 +20,7 @@ type Data = {
   data: Gene[]
 }
 
-const PAGE_SIZES = [10, 15, 20];
+const PAGE_SIZES = [20,50,100];
 
 function DataTableMant() {
 
@@ -29,7 +30,6 @@ function DataTableMant() {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
   const [records, setRecords] = React.useState(values?.data.slice(0, pageSize));
-  const [table_width,setWidth] = React.useState('100%')
 
 
   const getCSV = () => {
@@ -56,7 +56,11 @@ function DataTableMant() {
 
 
   return (
-    <Box sx={{ height: height }}>
+    <SimpleGrid 
+    cols={2}
+    sx={{ height: height }}
+    spacing= "lg"
+    breakpoints={[{maxWidth:"80rem",cols:1, spacing:"sm"}]}>
     <DataTable
     withBorder
     withColumnBorders
@@ -83,7 +87,10 @@ function DataTableMant() {
     recordsPerPage={pageSize}
     onRecordsPerPageChange={setPageSize}
     />
-    </Box>
+      <Box color='blue'>
+        
+      </Box>
+    </SimpleGrid>
   );
 }
 
