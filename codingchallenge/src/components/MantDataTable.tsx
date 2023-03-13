@@ -1,4 +1,4 @@
-import { DataTable } from 'mantine-datatable';
+import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import React from 'react'
 import { useEffect, useState } from 'react';
 import Papa from "papaparse"
@@ -20,7 +20,7 @@ type Data = {
   data: Gene[]
 }
 
-const PAGE_SIZES = [20,50,100];
+const PAGE_SIZES = [20, 50, 100];
 
 function DataTableMant() {
 
@@ -31,6 +31,7 @@ function DataTableMant() {
   const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
   const [records, setRecords] = React.useState(values?.data.slice(0, pageSize));
 
+  const [selectedRecords, setSelectedRecords] = useState<Gene[]>([])
 
   const getCSV = () => {
     Papa.parse("genes_human.csv", {
@@ -54,7 +55,6 @@ function DataTableMant() {
 
   const { height, width } = useViewportSize();
 
-
   return (
     <SimpleGrid 
     cols={2}
@@ -77,6 +77,7 @@ function DataTableMant() {
       { accessor: 'start', title:'Start'},
       { accessor: 'end', title:'End'}]}
     records={records}
+
     onRowClick={() => {
       console.log("You clicked a row!")
     }}
@@ -86,6 +87,10 @@ function DataTableMant() {
     recordsPerPageOptions={PAGE_SIZES}
     recordsPerPage={pageSize}
     onRecordsPerPageChange={setPageSize}
+
+    idAccessor='ensembl'
+    selectedRecords={selectedRecords}
+    onSelectedRecordsChange={setSelectedRecords}
     />
       <Box color='blue'>
         
