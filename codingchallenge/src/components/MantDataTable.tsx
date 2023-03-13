@@ -3,6 +3,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import Papa from "papaparse"
 import { Box } from '@mantine/core';
+import { useViewportSize } from '@mantine/hooks';
 
 type Gene = {
   ensembl: string
@@ -20,7 +21,7 @@ type Data = {
 
 const PAGE_SIZES = [10, 15, 20];
 
-function Data_Table_Mant() {
+function DataTableMant() {
 
   const [values, setValues] = React.useState<Data>()
   const [load, setLoad] = React.useState<boolean>(true)
@@ -50,10 +51,11 @@ function Data_Table_Mant() {
     setRecords(values?.data.slice(from, to));
   }, [page,values?.data])
 
+  const { height, width } = useViewportSize();
 
 
   return (
-    <Box sx={{ height: 805 }}>
+    <Box sx={{ height: height }}>
     <DataTable
     withBorder
     withColumnBorders
@@ -84,4 +86,4 @@ function Data_Table_Mant() {
   );
 }
 
-export default Data_Table_Mant
+export default DataTableMant
