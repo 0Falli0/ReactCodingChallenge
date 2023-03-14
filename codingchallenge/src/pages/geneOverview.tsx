@@ -3,6 +3,7 @@ import { useViewportSize } from '@mantine/hooks';
 import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
 import MyComponent from '../components/MyComponent';
+import GcChart from '../components/GcChart';
 
 
 function GeneOverview(){
@@ -27,7 +28,7 @@ function GeneOverview(){
         spacing= "lg"
         breakpoints={[{maxWidth:"80rem",cols:cols, spacing:"sm"}]}>
             <DataTableMant setDetail={setDetail}/>
-            {detailActive && <div><MyComponent/></div>}
+            {detailActive && <div><GcChart/></div>}
         </SimpleGrid>);
 }
 
