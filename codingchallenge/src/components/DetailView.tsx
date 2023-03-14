@@ -24,7 +24,6 @@ function DetailView(props:any){
         props.setLoading(false);
         setResponseData(response.data);
       } catch (error) {
-        console.error(error);
         setFailed(true);
         props.setLoading();
       }

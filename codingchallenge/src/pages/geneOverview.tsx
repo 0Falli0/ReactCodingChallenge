@@ -2,7 +2,7 @@ import { Box, LoadingOverlay, SimpleGrid } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
-import DetailView from '../components/MyComponent';
+import DetailView from '../components/DetailView';
 
 import GcChart from '../components/GcChart';
 
