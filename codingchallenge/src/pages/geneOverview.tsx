@@ -4,6 +4,7 @@ import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
 import DetailView from '../components/MyComponent';
 
+import GcChart from '../components/GcChart';
 
 
 function GeneOverview(){
