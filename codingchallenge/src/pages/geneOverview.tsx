@@ -2,7 +2,7 @@ import { Box, LoadingOverlay, SimpleGrid } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
-import MyComponent from '../components/MyComponent';
+import DetailView from '../components/MyComponent';
 
 
 
@@ -36,7 +36,7 @@ function GeneOverview(){
         breakpoints={[{maxWidth:"80rem",cols:cols, spacing:"sm"}]}>
 
             <DataTableMant setChoosenGene = {setChoosenGene} setDetail={setDetail} setLoading = {setLoading}/>
-            {detailActive&&<MyComponent choosenGene = {choosenGene} setLoading = {setLoading}/>}
+            {detailActive&&<DetailView choosenGene = {choosenGene} setLoading = {setLoading}/>}
         </SimpleGrid>    
         </Box>
         );
