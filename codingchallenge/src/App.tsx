@@ -1,12 +1,11 @@
-import { Container } from '@mantine/core';
 import React from 'react';
 import './App.css';
-import DataTableMant from './components/MantDataTable';
+import GeneOverview from './pages/geneOverview';
 
 function App() {
   return (
     <div>
-      <DataTableMant/>
+      <GeneOverview/>
     </div>
   );
 }

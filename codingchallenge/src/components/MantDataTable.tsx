@@ -1,10 +1,6 @@
-import { DataTable, DataTableSortStatus } from 'mantine-datatable';
+import { DataTable } from 'mantine-datatable';
 import React from 'react'
-import { useEffect, useState } from 'react';
 import Papa from "papaparse"
-import { Box } from '@mantine/core';
-import { useViewportSize } from '@mantine/hooks';
-import { SimpleGrid } from '@mantine/core';
 
 type Gene = {
   ensembl: string
@@ -22,16 +18,16 @@ type Data = {
 
 const PAGE_SIZES = [20, 50, 100];
 
-function DataTableMant() {
+function DataTableMant(setDetail:any) {
 
   const [values, setValues] = React.useState<Data>()
   const [load, setLoad] = React.useState<boolean>(true)
 
   const [page, setPage] = React.useState(1);
-  const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
+  const [pageSize, setPageSize] = React.useState(PAGE_SIZES[1]);
   const [records, setRecords] = React.useState(values?.data.slice(0, pageSize));
 
-  const [selectedRecords, setSelectedRecords] = useState<Gene[]>([])
+  const [selectedRecords, setSelectedRecords] = React.useState<Gene[]>([])
 
   const getCSV = () => {
     Papa.parse("genes_human.csv", {
@@ -51,16 +47,10 @@ function DataTableMant() {
     const from = (page - 1) * pageSize;
     const to = from + pageSize;
     setRecords(values?.data.slice(from, to));
-  }, [page,values?.data])
+  }, [page,values?.data,pageSize])
 
-  const { height, width } = useViewportSize();
 
   return (
-    <SimpleGrid 
-    cols={2}
-    sx={{ height: height }}
-    spacing= "lg"
-    breakpoints={[{maxWidth:"80rem",cols:1, spacing:"sm"}]}>
     <DataTable
     withBorder
     withColumnBorders
@@ -79,7 +69,8 @@ function DataTableMant() {
     records={records}
 
     onRowClick={() => {
-      console.log("You clicked a row!")
+      console.log("You clicked a row!");
+      setDetail.setDetail(true);
     }}
     totalRecords={values?.data.length}
     page={page}
@@ -92,11 +83,7 @@ function DataTableMant() {
     selectedRecords={selectedRecords}
     onSelectedRecordsChange={setSelectedRecords}
     />
-      <Box color='blue'>
-        
-      </Box>
-    </SimpleGrid>
   );
 }
 
-export default DataTableMant
+export default DataTableMant;
