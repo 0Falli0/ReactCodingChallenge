@@ -1,35 +1,36 @@
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+import { setDatasets } from 'react-chartjs-2/dist/utils';
 
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+type props = {
+    gc_count: number;
+}
 
-function GcChart() {
+function GcChart(props: props) {
+    const data = {
+        labels: ['GC' , 'AT'],
+        datasets: [
+            {
+                label: '% of bases proportion',
+                data: [props.gc_count, 100 - props.gc_count],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1,
+            },
+        ],
+    };
+
     return (
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={400} height={400}>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            outerRadius={80}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
-    );
+        <Pie data={data}/>
+    )
 }
 
 export default GcChart;
