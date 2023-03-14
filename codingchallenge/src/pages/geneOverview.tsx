@@ -1,16 +1,20 @@
-import { SimpleGrid } from '@mantine/core';
+import { Box, LoadingOverlay, SimpleGrid } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
 import MyComponent from '../components/MyComponent';
 
 
+
 function GeneOverview(){
     
-    const { height } = useViewportSize();
+    const { height,width } = useViewportSize();
 
     const [detailActive, setDetail] = React.useState<boolean>(false);
     const [cols, setCols] = React.useState<number>(1);
+    const [choosenGene, setChoosenGene] = React.useState<string|undefined>();
+    
+    const [loading, setLoading] = React.useState<boolean>(false);
 
     useEffect(()=>{
         if (detailActive) {
@@ -19,16 +23,23 @@ function GeneOverview(){
         else{
             setCols(1);
         }
-    },[detailActive])
+        console.log(choosenGene);
+    },[detailActive,choosenGene])
 
-    return(    <SimpleGrid 
+    return(
+        <Box sx={{width: width,height:height}}>
+        <LoadingOverlay visible={loading}/>
+        <SimpleGrid
         cols={cols}
         sx={{ height: height }}
         spacing= "lg"
         breakpoints={[{maxWidth:"80rem",cols:cols, spacing:"sm"}]}>
-            <DataTableMant setDetail={setDetail}/>
-            {detailActive && <div><MyComponent/></div>}
-        </SimpleGrid>);
+
+            <DataTableMant setChoosenGene = {setChoosenGene} setDetail={setDetail} setLoading = {setLoading}/>
+            {detailActive&&<MyComponent choosenGene = {choosenGene} setLoading = {setLoading}/>}
+        </SimpleGrid>    
+        </Box>
+        );
 }
 
 export default GeneOverview;
