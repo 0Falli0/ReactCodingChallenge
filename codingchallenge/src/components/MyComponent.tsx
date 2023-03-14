@@ -1,38 +1,34 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
 
-interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
 
 interface ApiResponse {
   data: any
 }
 
-const MyComponent: React.FC = () => {
+function MyComponent(){
   const [responseData, setResponseData] = useState<ApiResponse>();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response: AxiosResponse<ApiResponse> = await axios.get(
-          'https://rest.ensembl.org/ga4gh/features/ENSG00000176515.1?content-type=application/json'
-        );
-        setResponseData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const response: AxiosResponse<ApiResponse> = await axios.get(
+        'https://rest.ensembl.org/ga4gh/features/ENSG00000176515.1?content-type=application/json'
+      );
+      setResponseData(response.data);
+      console.log(responseData)
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, [responseData]);
 
   return (
     <div>
-      <p>{JSON.stringify(responseData?.data, null, 2)}</p>
+      <p>{JSON.stringify(responseData)}</p>
     </div>
   );
 };
