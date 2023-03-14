@@ -2,7 +2,7 @@ import { SimpleGrid } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
-
+import MyComponent from '../components/MyComponent';
 
 
 function GeneOverview(){
@@ -27,7 +27,7 @@ function GeneOverview(){
         spacing= "lg"
         breakpoints={[{maxWidth:"80rem",cols:cols, spacing:"sm"}]}>
             <DataTableMant setDetail={setDetail}/>
-            {detailActive && <div><p>LOL</p></div>}
+            {detailActive && <div><MyComponent/></div>}
         </SimpleGrid>);
 }
 

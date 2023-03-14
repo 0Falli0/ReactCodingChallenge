@@ -1,7 +1,6 @@
 import React from 'react';
 import Papa from "papaparse"
 import { Table } from '@mantine/core';
-import DetailsButton from './DetailsButton';
 
 type Gene = {
   ensembl: string
@@ -63,7 +62,6 @@ function Data_Table() {
     <th>{header?.chromosome}</th>
     <th>{header?.start}</th>
     <th>{header?.end}</th>
-    <th>Details</th>
   </tr>);
 
   const rows = values?.data.map((element) => (
@@ -75,7 +73,6 @@ function Data_Table() {
       <td>{element.chromosome}</td>
       <td>{element.start}</td>
       <td>{element.end}</td>
-      <DetailsButton/>
     </tr>
   ));
 
