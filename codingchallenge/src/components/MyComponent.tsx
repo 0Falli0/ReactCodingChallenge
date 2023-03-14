@@ -5,30 +5,42 @@ interface ApiResponse {
   data: any
 }
 
-const MyComponent: React.FC = () => {
+function DetailView(props:any){
   const [responseData, setResponseData] = useState<ApiResponse>();
+  const [loaded, setLoaded] = useState<boolean>(false);
+  const [failedRequest, setFailed] = useState<boolean>(false);
+
+
 
   useEffect(() => {
-    const fetchData = async () => {
+    props.setLoading(true);
+    const FetchData = async () => {
       try {
         const response: AxiosResponse<ApiResponse> = await axios.get(
-          'https://rest.ensembl.org/ga4gh/features/ENSG00000176515.1?content-type=application/json'
+          'https://rest.ensembl.org/ga4gh/features/'+props.choosenGene+'.1?content-type=application/json'
         );
+        setLoaded(true);
+        setFailed(false);
+        props.setLoading(false);
         setResponseData(response.data);
-        console.log(response.data)
       } catch (error) {
         console.error(error);
+        setFailed(true);
+        props.setLoading();
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    FetchData();
+  }, [props.choosenGene]);
 
-  return (
-    <div>
-      <p>{JSON.stringify(responseData?.data, null, 2)}</p>
-    </div>
-  );
+    return (
+      <div>
+        {!failedRequest && loaded && <p>{JSON.stringify(responseData,null,2)}</p>}
+        {failedRequest && <p>ERROR</p>}
+      </div>
+        );
+  
+
 };
 
-export default MyComponent;
+export default DetailView;

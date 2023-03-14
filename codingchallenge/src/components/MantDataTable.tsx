@@ -18,7 +18,7 @@ type Data = {
 
 const PAGE_SIZES = [20, 50, 100];
 
-function DataTableMant(setDetail:any) {
+function DataTableMant(props:any) {
 
   const [values, setValues] = React.useState<Data>()
   const [load, setLoad] = React.useState<boolean>(true)
@@ -68,9 +68,9 @@ function DataTableMant(setDetail:any) {
       { accessor: 'end', title:'End'}]}
     records={records}
 
-    onRowClick={() => {
-      console.log("You clicked a row!");
-      setDetail.setDetail(true);
+    onRowClick={(e) => {
+      props.setDetail(true);
+      props.setChoosenGene(e.ensembl);
     }}
     totalRecords={values?.data.length}
     page={page}
