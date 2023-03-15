@@ -1,8 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
+import GcChart from './GcChart';
 
 interface ApiResponse {
-  data: any
+  attributes: any
 }
 
 function DetailView(props:any){
@@ -22,7 +23,9 @@ function DetailView(props:any){
         setLoaded(true);
         setFailed(false);
         props.setLoading(false);
+
         setResponseData(response.data);
+        console.log(responseData);
       } catch (error) {
         setFailed(true);
         props.setLoading();
@@ -34,7 +37,9 @@ function DetailView(props:any){
 
     return (
       <div>
-        {!failedRequest && loaded && <p>{JSON.stringify(responseData,null,2)}</p>}
+        {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])}/>}
+        {/* {!failedRequest && loaded && <GcChart gc_count={44}/>} */}
+         {/* {!failedRequest && loaded && <p>{JSON.stringify(responseData)}</p>} */}
         {failedRequest && <p>ERROR</p>}
       </div>
         );

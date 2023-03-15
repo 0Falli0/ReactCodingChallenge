@@ -1,6 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { setDatasets } from 'react-chartjs-2/dist/utils';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -9,6 +8,7 @@ type props = {
 }
 
 function GcChart(props: props) {
+  console.log(props.gc_count);
     const data = {
         labels: ['GC' , 'AT'],
         datasets: [
