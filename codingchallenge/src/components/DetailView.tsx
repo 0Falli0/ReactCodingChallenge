@@ -14,7 +14,7 @@ function DetailView(props: any) {
   const [responseData, setResponseData] = useState<ApiResponse>();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [failedRequest, setFailed] = useState<boolean>(false);
-  const { height,width } = useViewportSize();
+  const { height, width } = useViewportSize();
 
 
   useEffect(() => {
@@ -39,17 +39,21 @@ function DetailView(props: any) {
     FetchData();
   }, [props.choosenGene]);
 
-    return (
-      <Box sx={{height: height / 2, width: width / 4}}>
-            <SimpleGrid cols={2}>
-      {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
-      {failedRequest && <p>ERROR</p>}
-      <ActionIcon onClick={props.close} sx={{float:'right'}}>
-        <IconX size="15rem"/>
-      </ActionIcon>
-    </SimpleGrid>
-      </Box>
-        );
+  return (
+    <Box sx={{ height: height / 2, width: width / 2 }}>
+      <SimpleGrid cols={2} spacing="lg">
+        <Box sx={{width:width/4}}>
+        {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
+        {failedRequest && <p>ERROR</p>}
+        </Box>
+        <Box>
+          <ActionIcon onClick={props.close}>
+            <IconX size="15rem" />
+          </ActionIcon>
+        </Box>
+      </SimpleGrid>
+    </Box>
+  );
 
 };
 
