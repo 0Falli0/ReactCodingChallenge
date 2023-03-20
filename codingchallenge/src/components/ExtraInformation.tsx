@@ -5,7 +5,11 @@ interface ApiResponse{
     attributes: any
 }
 
-function ExtraInformation(){
+type props = {
+  choosenGene: string
+}
+
+function ExtraInformation(props: props){
     const [responseData, setResponseData] = React.useState<ApiResponse>();
     const [loaded, setLoaded] = React.useState<boolean>(false);
     const [failedRequest, setFailed] = React.useState<boolean>(false);
@@ -14,11 +18,10 @@ function ExtraInformation(){
         const FetchData = async () => {
           try {
             const response: AxiosResponse<ApiResponse> = await axios.get(
-              'https://rest.ensembl.org/lookup/id/ENSG00000157764?content-type=application/json'
+              'https://rest.ensembl.org/lookup/id/' + props.choosenGene + '?content-type=application/json'
             );
             setLoaded(true);
             setFailed(false);
-    
             setResponseData(response.data);
             console.log(responseData);
           } catch (error) {
@@ -27,9 +30,11 @@ function ExtraInformation(){
         }
     
         FetchData();
-    });
+    }, [props.choosenGene]);
 
-    console.log(responseData?.attributes)
+    return(
+      <div><p>{responseData?.attributes?.vals['species']}</p></div>
+    )
 }
 
 export default ExtraInformation;
