@@ -43,7 +43,7 @@ function DetailView(props: any) {
 
   return (
     <Box sx={{ height: height / 2, width: width / 2 }}>
-      <SimpleGrid cols={2} spacing="lg">
+      <SimpleGrid cols={2}>
         <Box sx={{width:width/4}}>
         {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
         {failedRequest && <p>ERROR</p>}
