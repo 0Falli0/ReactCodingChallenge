@@ -37,6 +37,7 @@ function DataTableMant(props:any) {
       skipEmptyLines: true,
       delimiter: ";",
       complete: (results: Data) => {
+        results!.data = results!.data.map(obj=>({...obj,test:"Test"}));
         setValues(results);
         setLoad(false);
       },
@@ -66,7 +67,8 @@ function DataTableMant(props:any) {
       { accessor: 'biotype', title:'BioType'},
       { accessor: 'chromosome', title:'Chromosome'},
       { accessor: 'start', title:'Start'},
-      { accessor: 'end', title:'End'}]}
+      { accessor: 'end', title:'End'},
+      { accessor: 'test', title:'Test'},]}
     records={records}
 
     onRowClick={(e) => {

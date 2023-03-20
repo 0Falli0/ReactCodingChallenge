@@ -10,7 +10,7 @@ type props = {
 }
 
 function ExtraInformation(props: props){
-    const [responseData, setResponseData] = React.useState<ApiResponse>();
+    const [responseData, setResponseData] = React.useState<any>();
     const [loaded, setLoaded] = React.useState<boolean>(false);
     const [failedRequest, setFailed] = React.useState<boolean>(false);
 
@@ -33,7 +33,7 @@ function ExtraInformation(props: props){
     }, [props.choosenGene]);
 
     return(
-      <div><p>{responseData?.attributes?.vals['species']}</p></div>
+      <div><p>{responseData['species']}</p></div>
     )
 }
 

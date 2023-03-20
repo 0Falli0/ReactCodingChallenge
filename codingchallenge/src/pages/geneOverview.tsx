@@ -37,7 +37,6 @@ function GeneOverview(){
 
             <DataTableMant setChoosenGene = {setChoosenGene} setDetail={setDetail} setLoading = {setLoading}/>
             {detailActive&&<DetailView choosenGene = {choosenGene} setLoading = {setLoading} close={()=>setDetail(false)}/>}
-            <ExtraInformation choosenGene={choosenGene!}/>
         </SimpleGrid>    
         </Box>
         );
