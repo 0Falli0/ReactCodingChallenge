@@ -1,5 +1,7 @@
+import { Box } from '@mantine/core';
 import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useViewportSize } from '@mantine/hooks';
 import GcChart from './GcChart';
 
 interface ApiResponse {
@@ -10,7 +12,7 @@ function DetailView(props:any){
   const [responseData, setResponseData] = useState<ApiResponse>();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [failedRequest, setFailed] = useState<boolean>(false);
-
+  const { height,width } = useViewportSize();
 
 
   useEffect(() => {
@@ -36,14 +38,13 @@ function DetailView(props:any){
   }, [props.choosenGene]);
 
     return (
-      <div>
+      <Box sx={{height: height / 2, width: width / 4}}>
         {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])}/>}
         {/* {!failedRequest && loaded && <GcChart gc_count={44}/>} */}
          {/* {!failedRequest && loaded && <p>{JSON.stringify(responseData)}</p>} */}
         {failedRequest && <p>ERROR</p>}
-      </div>
+      </Box>
         );
-  
 
 };
 
