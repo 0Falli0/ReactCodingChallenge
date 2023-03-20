@@ -82,7 +82,8 @@ function DataTableMant(props:any) {
     idAccessor='ensembl'
     selectedRecords={selectedRecords}
     onSelectedRecordsChange={setSelectedRecords}
-    />
+    /> 
+
   );
 }
 

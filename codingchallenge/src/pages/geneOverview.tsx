@@ -4,7 +4,6 @@ import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
 import DetailView from '../components/DetailView';
 
-import GcChart from '../components/GcChart';
 
 
 function GeneOverview(){
@@ -37,7 +36,7 @@ function GeneOverview(){
         breakpoints={[{maxWidth:"80rem",cols:cols, spacing:"sm"}]}>
 
             <DataTableMant setChoosenGene = {setChoosenGene} setDetail={setDetail} setLoading = {setLoading}/>
-            {detailActive&&<DetailView choosenGene = {choosenGene} setLoading = {setLoading}/>}
+            {detailActive&&<DetailView choosenGene = {choosenGene} setLoading = {setLoading} close={()=>setDetail(false)}/>}
         </SimpleGrid>    
         </Box>
         );
