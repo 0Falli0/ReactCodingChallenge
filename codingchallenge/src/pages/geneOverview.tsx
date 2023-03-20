@@ -3,6 +3,7 @@ import { useViewportSize } from '@mantine/hooks';
 import DataTableMant from '../components/MantDataTable';
 import React, { useEffect } from 'react'
 import DetailView from '../components/DetailView';
+import ExtraInformation from '../components/ExtraInformation';
 
 
 
@@ -12,7 +13,7 @@ function GeneOverview(){
 
     const [detailActive, setDetail] = React.useState<boolean>(false);
     const [cols, setCols] = React.useState<number>(1);
-    const [choosenGene, setChoosenGene] = React.useState<string|undefined>();
+    const [choosenGene, setChoosenGene] = React.useState<string>();
     
     const [loading, setLoading] = React.useState<boolean>(false);
 
@@ -26,7 +27,7 @@ function GeneOverview(){
     },[detailActive,choosenGene])
 
     return(
-        <Box sx={{width: width,height:height}}>
+        <Box sx={{width: width, height:height}}>
         <LoadingOverlay visible={loading}/>
         <SimpleGrid
         cols={cols}
@@ -36,6 +37,7 @@ function GeneOverview(){
 
             <DataTableMant setChoosenGene = {setChoosenGene} setDetail={setDetail} setLoading = {setLoading}/>
             {detailActive&&<DetailView choosenGene = {choosenGene} setLoading = {setLoading} close={()=>setDetail(false)}/>}
+            <ExtraInformation choosenGene={choosenGene!}/>
         </SimpleGrid>    
         </Box>
         );
