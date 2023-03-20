@@ -1,7 +1,9 @@
+import { Box } from '@mantine/core';
 import { ActionIcon, SimpleGrid } from '@mantine/core';
 import { IconX } from '@tabler/icons-react';
 import axios, { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useViewportSize } from '@mantine/hooks';
 import GcChart from './GcChart';
 
 interface ApiResponse {
@@ -12,7 +14,7 @@ function DetailView(props: any) {
   const [responseData, setResponseData] = useState<ApiResponse>();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [failedRequest, setFailed] = useState<boolean>(false);
-
+  const { height,width } = useViewportSize();
 
 
   useEffect(() => {
@@ -37,16 +39,17 @@ function DetailView(props: any) {
     FetchData();
   }, [props.choosenGene]);
 
-  return (
-    <SimpleGrid cols={2}>
+    return (
+      <Box sx={{height: height / 2, width: width / 4}}>
+            <SimpleGrid cols={2}>
       {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
       {failedRequest && <p>ERROR</p>}
       <ActionIcon onClick={props.close} sx={{float:'right'}}>
         <IconX size="15rem"/>
       </ActionIcon>
     </SimpleGrid>
-  );
-
+      </Box>
+        );
 
 };
 

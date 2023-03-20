@@ -1,5 +1,6 @@
 import { DataTable } from 'mantine-datatable';
 import React from 'react'
+import axios, { AxiosResponse } from 'axios';
 import Papa from "papaparse"
 
 type Gene = {

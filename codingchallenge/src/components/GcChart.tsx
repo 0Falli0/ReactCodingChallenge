@@ -8,7 +8,6 @@ type props = {
 }
 
 function GcChart(props: props) {
-  console.log(props.gc_count);
     const data = {
         labels: ['GC' , 'AT'],
         datasets: [
