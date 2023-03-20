@@ -42,7 +42,7 @@ function DetailView(props: any) {
   }, [props.choosenGene]);
 
   return (
-    <Box sx={{ height: height / 2, width: width / 2 }}>
+    <Box>
       <SimpleGrid cols={2}>
         <Box sx={{width:width/4}}>
         {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
