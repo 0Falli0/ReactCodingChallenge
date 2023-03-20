@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import { useViewportSize } from '@mantine/hooks';
 import GcChart from './GcChart';
 
+import ExtraInformation from './ExtraInformation';
+
 interface ApiResponse {
   attributes: any
 }

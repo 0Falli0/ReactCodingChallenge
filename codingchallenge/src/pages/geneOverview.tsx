@@ -23,7 +23,6 @@ function GeneOverview(){
         else{
             setCols(1);
         }
-        console.log(choosenGene);
     },[detailActive,choosenGene])
 
     return(
