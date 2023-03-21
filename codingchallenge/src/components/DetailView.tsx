@@ -12,6 +12,7 @@ interface ApiResponse {
   attributes: any
 }
 
+
 function DetailView(props: any) {
   const [responseData, setResponseData] = useState<ApiResponse>();
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -44,9 +45,9 @@ function DetailView(props: any) {
   return (
     <Box>
       <SimpleGrid cols={2}>
-        <Box sx={{width:width/4}}>
-        {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
-        {failedRequest && <p>ERROR</p>}
+        <Box sx={{ width: width / 4 }}>
+          {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
+          {failedRequest && <p>ERROR</p>}
         </Box>
         <Box>
           <ActionIcon onClick={props.close}>
