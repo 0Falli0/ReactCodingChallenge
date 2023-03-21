@@ -2,18 +2,23 @@ import { Box } from '@mantine/core';
 import { ActionIcon, SimpleGrid } from '@mantine/core';
 import { IconX } from '@tabler/icons-react';
 import axios, { AxiosResponse } from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { SetStateAction, useEffect, useState } from 'react';
 import { useViewportSize } from '@mantine/hooks';
 import GcChart from './GcChart';
 
-import ExtraInformation from './ExtraInformation';
 
 interface ApiResponse {
   attributes: any
 }
 
+//set proptype
+type proptype = {
+  setLoading: React.Dispatch<SetStateAction<boolean>>
+  close: ()=>void
+  choosenGene : string|undefined
+}
 
-function DetailView(props: any) {
+function DetailView(props: proptype) {
   const [responseData, setResponseData] = useState<ApiResponse>();
   const [loaded, setLoaded] = useState<boolean>(false);
   const [failedRequest, setFailed] = useState<boolean>(false);
@@ -21,6 +26,7 @@ function DetailView(props: any) {
 
 
   useEffect(() => {
+    //fetch additional data
     props.setLoading(true);
     const FetchData = async () => {
       try {
@@ -35,7 +41,7 @@ function DetailView(props: any) {
         console.log(responseData);
       } catch (error) {
         setFailed(true);
-        props.setLoading();
+        props.setLoading(false);
       }
     }
 
@@ -43,11 +49,12 @@ function DetailView(props: any) {
   }, [props.choosenGene]);
 
   return (
+    //display data according to selected entry
     <Box>
       <SimpleGrid cols={2}>
         <Box sx={{ width: width / 4 }}>
           {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
-          {failedRequest && <p>ERROR</p>}
+          {failedRequest && <p>ERROR Invalid request!</p>}
         </Box>
         <Box>
           <ActionIcon onClick={props.close}>

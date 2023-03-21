@@ -1,13 +1,9 @@
 import { DataTable } from 'mantine-datatable';
 import React from 'react'
-import axios, { AxiosResponse } from 'axios';
 import Papa from "papaparse"
 
 
-interface ApiResponse {
-  data: any
-}
-
+//type for gene entry
 type Gene = {
   ensembl: string
   gene_symbol: string
@@ -19,15 +15,25 @@ type Gene = {
   species: string
 }
 
+//type for whole gene table
 type Genedata = Gene[];
 
 type PapaParseData = {
   data: Gene[]
 };
 
-const PAGE_SIZES = [20, 50, 100];
 
-function DataTableMant(props: any) {
+type proptype = {
+  setChoosenGene: React.Dispatch<React.SetStateAction<string | undefined>>
+  setDetail: React.Dispatch<React.SetStateAction<boolean>>
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+
+function DataTableMant(props: proptype) {
+  
+  //define state vars and number of entries to display
+  const PAGE_SIZES = [20, 50, 100];
 
   const [values, setValues] = React.useState<Genedata>()
   const [load, setLoad] = React.useState<boolean>(true)
@@ -56,6 +62,7 @@ function DataTableMant(props: any) {
     //     console.log(error);
     //   }
     // }
+    //load csv data
     const getCSV = () => {
       Papa.parse('genes_human.csv', {
         header: true,
@@ -77,6 +84,7 @@ function DataTableMant(props: any) {
 
 
   return (
+    // load mantine datatable with required data
     <DataTable
       withBorder
       withColumnBorders
@@ -94,6 +102,7 @@ function DataTableMant(props: any) {
       { accessor: 'end', title: 'End' }]}
       records={records}
 
+      //load details on rowclick
       onRowClick={(e) => {
         props.setDetail(true);
         props.setChoosenGene(e.ensembl);
