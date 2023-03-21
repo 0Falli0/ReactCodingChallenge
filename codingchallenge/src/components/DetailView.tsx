@@ -9,13 +9,14 @@ import GcChart from './GcChart';
 
 interface ApiResponse {
   attributes: any
+  strand: any
 }
 
 //set proptype
 type proptype = {
   setLoading: React.Dispatch<SetStateAction<boolean>>
-  close: ()=>void
-  choosenGene : string|undefined
+  close: () => void
+  choosenGene: string | undefined
 }
 
 function DetailView(props: proptype) {
@@ -26,8 +27,10 @@ function DetailView(props: proptype) {
 
   function DetailTable() {
     const AdditionalInformationElements = [
-      { type:"Biotype",value: responseData?.attributes?.vals['biotype'] },
-      { type:"GC",value: responseData?.attributes?.vals['gene gc'] }
+      { type: "Biotype", value: responseData?.attributes?.vals['biotype'] },
+      { type: "GC", value: responseData?.attributes?.vals['gene gc'] },
+      { type: "Strand", value: responseData?.strand },
+      { type: "Source", value: responseData?.attributes?.vals['source'] },
     ]
 
     const rows = AdditionalInformationElements.map((element) => (
@@ -76,18 +79,18 @@ function DetailView(props: proptype) {
   return (
     //display data according to selected entry
     <Box>
-      <Box>
-        <DetailTable />
-      </Box>
       <SimpleGrid cols={2}>
-        <Box sx={{ width: width / 4 }}>
-          {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
-          {failedRequest && <p>ERROR Invalid request!</p>}
+        <Box>
+          {!failedRequest && loaded && <DetailTable />}
         </Box>
         <Box>
           <ActionIcon onClick={props.close}>
             <IconX size="15rem" />
           </ActionIcon>
+        </Box>
+        <Box sx={{ width: width / 4 }}>
+          {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
+          {failedRequest && <p>ERROR Invalid request!</p>}
         </Box>
       </SimpleGrid>
     </Box>
