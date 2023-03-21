@@ -1,4 +1,4 @@
-import { Box } from '@mantine/core';
+import { Box, Table } from '@mantine/core';
 import { ActionIcon, SimpleGrid } from '@mantine/core';
 import { IconX } from '@tabler/icons-react';
 import axios, { AxiosResponse } from 'axios';
@@ -6,12 +6,10 @@ import React, { useEffect, useState } from 'react';
 import { useViewportSize } from '@mantine/hooks';
 import GcChart from './GcChart';
 
-import ExtraInformation from './ExtraInformation';
 
 interface ApiResponse {
   attributes: any
 }
-
 
 function DetailView(props: any) {
   const [responseData, setResponseData] = useState<ApiResponse>();
@@ -19,6 +17,31 @@ function DetailView(props: any) {
   const [failedRequest, setFailed] = useState<boolean>(false);
   const { height, width } = useViewportSize();
 
+  function DetailTable() {
+    const AdditionalInformationElements = [
+      { type:"Biotype",value: responseData?.attributes?.vals['biotype'] },
+      { type:"GC",value: responseData?.attributes?.vals['gene gc'] }
+    ]
+
+    const rows = AdditionalInformationElements.map((element) => (
+      <tr key={element.type}>
+        <td>{element.type}</td>
+        <td>{element.value}</td>
+      </tr>
+    ))
+
+    return (
+      <Table>
+        <thead>
+          <tr>
+            <th>Entry</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </Table>
+    )
+  }
 
   useEffect(() => {
     props.setLoading(true);
@@ -44,6 +67,9 @@ function DetailView(props: any) {
 
   return (
     <Box>
+      <Box>
+        <DetailTable />
+      </Box>
       <SimpleGrid cols={2}>
         <Box sx={{ width: width / 4 }}>
           {!failedRequest && loaded && <GcChart gc_count={Number(responseData?.attributes?.vals['gene gc'])} />}
