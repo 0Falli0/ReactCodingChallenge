@@ -8,6 +8,7 @@ type props = {
 }
 
 function GcChart(props: props) {
+    //configure data for pie chart
     const data = {
         labels: ['GC' , 'AT'],
         datasets: [
@@ -28,6 +29,7 @@ function GcChart(props: props) {
     };
 
     return (
+        //return pie chart
         <Pie data={data}/>
     )
 }
