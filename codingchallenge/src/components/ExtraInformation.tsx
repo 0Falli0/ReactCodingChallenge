@@ -23,9 +23,8 @@ function ExtraInformation(props: props){
             setLoaded(true);
             setFailed(false);
             setResponseData(response.data);
-            console.log(responseData);
           } catch (error) {
-            setFailed(true);
+            return "not found"
           }
         }
     
